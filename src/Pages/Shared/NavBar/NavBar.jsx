@@ -1,6 +1,5 @@
 // import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import favicon from "../../../assets/favicon.png";
 // import { AuthContext } from "../Providers/AuthProvider";
 
 const Navbar = () => {
@@ -72,7 +71,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex items-center justify-center gap-1">
-          <img src={favicon} alt="logo-ct" className="w-10" />
+          <img src="https://i.ibb.co/f8vgwnB/favicon.png" alt="logo-ct" className="w-10" />
           <p className="font-bold text-xl">GrooveR</p>
         </div>
       </div>
