@@ -1,19 +1,19 @@
-// import { useContext } from "react";
-import { NavLink } from "react-router-dom";
-// import { AuthContext } from "../Providers/AuthProvider";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Navbar = () => {
-  //   const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
-  //   const handleLogOut = () => {
-  //     logOut()
-  //       .then(() => {
-  //         console.log("User logOut");
-  //       })
-  //       .catch((error) => {
-  //         console.error(error);
-  //       });
-  //   };
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        console.log("User logOut");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   const navLinks = (
     <>
@@ -23,9 +23,15 @@ const Navbar = () => {
       <li>
         <NavLink to="/appartment">Apartment</NavLink>
       </li>
-      <li>
-        <NavLink to="/login">Login</NavLink>
-      </li>
+      {user ? (
+        <></>
+      ) : (
+        <>
+          <li>
+            <NavLink to="/login">Login</NavLink>
+          </li>
+        </>
+      )}
       <li>
         <NavLink to="/regi">Register</NavLink>
       </li>
@@ -65,7 +71,7 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[120] p-2 shadow bg-base-100 rounded-box w-52"
           >
             {navLinks}
           </ul>
@@ -78,32 +84,52 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
-      {/* <div className="navbar-end">
+      <div className="navbar-end">
         {user ? (
           <>
             <div className="dropdown dropdown-left">
               <label tabIndex={0}>
                 {user.photoURL ? (
                   <div className="flex text-center md:flex-row items-center">
-                    <img className="rounded-full w-10 mr-2" src={user.photoURL} alt="User" />
-                    <p className="pr-2">{user.displayName}</p>
+                    <img
+                      className="rounded-full w-10 mr-2 cursor-pointer"
+                      src={user.photoURL}
+                      alt="User"
+                    />
                   </div>
                 ) : (
                   <div className="flex text-center md:flex-row items-center">
                     <div className="rounded-full w-10 h-10 flex items-center justify-center border border-gray-300">
-                      <p className="text-center text-xs">No image</p>
+                      <img
+                        className="rounded-full w-10 mr-2 cursor-pointer"
+                        src={user.photoURL}
+                        alt="User"
+                      />
                     </div>
-                    <p className="p-2">{user.displayName}</p>
                   </div>
                 )}
               </label>
-
-              <ul tabIndex={0} className="dropdown-content z-[1] w-28 mt-[-2px]">
+              <ul
+                tabIndex={100}
+                className="dropdown-content relative z-[100] w-44 h-28 mt-[-2px] space-y-2"
+              >
                 <li>
-                  <a onClick={handleLogOut} className="btn">
-                    Sign Out{" "}
-                  </a>{" "}
+                  <p className="pr-2 text-white relative z-10 pl-5 pt-5">{user.displayName}</p>
                 </li>
+                <li>
+                  <Link className="text-white relative z-10 p-5 hover:text-cyan-400">
+                    Dashboard
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    onClick={handleLogOut}
+                    className=" text-white  relative z-10 p-5 cursor-pointer hover:text-cyan-400"
+                  >
+                    Sign Out
+                  </a>
+                </li>
+                <li className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-md border border-gray-300 rounded-md pointer-events-none z-0"></li>
               </ul>
             </div>
           </>
@@ -112,7 +138,7 @@ const Navbar = () => {
             <button className="btn btn-sm">Login</button>
           </Link>
         )}
-      </div> */}
+      </div>
     </div>
   );
 };

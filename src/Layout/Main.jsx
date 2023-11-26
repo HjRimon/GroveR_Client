@@ -3,15 +3,16 @@ import Footer from "../Pages/Shared/Footer/Footer";
 import NavBar from "../Pages/Shared/NavBar/NavBar";
 
 const Main = () => {
-  // const location = useLocation();
-  // const noHeaderFooter =
-  //   location.pathname.includes("appartment") || location.pathname.includes("signup");
+  const location = useLocation();
+  const noHeaderFooter = location.pathname.includes("login") || location.pathname.includes("regi");
+  const noNavBar = location.pathname.includes("login") || location.pathname.includes("regi");
   return (
     <div>
-      <NavBar></NavBar>
+      {/* <NavBar></NavBar> */}
+      {noNavBar || <NavBar></NavBar>}
       <Outlet></Outlet>
-      {/* {noHeaderFooter || <Footer></Footer>} */}
-      <Footer></Footer>
+      {noHeaderFooter || <Footer></Footer>}
+      {/* <Footer></Footer> */}
     </div>
   );
 };

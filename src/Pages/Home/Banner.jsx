@@ -4,11 +4,12 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "./styles.css";
 
-import { EffectCoverflow, Pagination } from "swiper/modules";
+import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
+const modules = [EffectCoverflow, Pagination, Autoplay];
 const Banner = () => {
   return (
     <div>
-      <Swiper
+      {/* <Swiper
         effect={"coverflow"}
         grabCursor={true}
         centeredSlides={true}
@@ -23,6 +24,27 @@ const Banner = () => {
         pagination={true}
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper"
+      > */}
+      <Swiper
+        effect={"coverflow"}
+        grabCursor={true}
+        centeredSlides={true}
+        slidesPerView={"auto"}
+        coverflowEffect={{
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        }}
+        pagination={true}
+        modules={modules}
+        className="mySwiper"
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        speed={800}
       >
         <SwiperSlide>
           <div className="swiper-slide-content">
