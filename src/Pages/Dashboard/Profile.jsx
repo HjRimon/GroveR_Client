@@ -4,7 +4,6 @@ import useCart from "../../Hooks/useCart";
 const Profile = () => {
   const [cart] = useCart();
   const { user } = useAuth();
-  const totalPrice = cart.reduce((total, item) => total + item.rent, 0);
   return (
     <div className="w-[98%] h-[100vh] mx-auto">
       <div className="ml-7 md:ml-[130px] lg:ml-[700px]">
@@ -52,22 +51,50 @@ const Profile = () => {
         </div>
       </div>
       {/* Cart */}
-      <div className="my-16">
-        <div className="flex items-center justify-center gap-4">
-          <h1 className="text-6xl">Total Price : {totalPrice}</h1>
-          <div className="relative inline-flex  group">
-            <div className="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
-            <a
-              href="#"
-              title="Get quote now"
-              className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-              role="button"
-            >
-              Pay Now
-            </a>
-          </div>
+
+      {/* --------- */}
+      <div>
+        <h1 className="md:text-4xl text-xl font-bold text-center -ml-12 w-full my-9 md:my-20 md:ml-10 lg:ml-[355px]">
+          Your Pending Request
+        </h1>
+        <div>
+          <table className="table w-full -ml-16 md:ml-5 lg:ml-[400px]">
+            {/* head */}
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Apartment No</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cart.map((item, i) => (
+                <tr key={item._id}>
+                  <th>{i + 1}</th>
+                  <td>
+                    <div className="flex items-center gap-3">
+                      <div className="avatar">
+                        <div className="mask mask-squircle w-12 h-12">
+                          <img src={item.image} alt="Avatar Tailwind CSS Component" />
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>{item.name}</td>
+                  <td>{item.apartment_no}</td>
+                  <th>
+                    <button className="btn btn-info btn-outline btn-xs">pending</button>
+                  </th>
+                </tr>
+              ))}
+              {/* row 1 */}
+            </tbody>
+          </table>
         </div>
       </div>
+      {/* ----------- */}
     </div>
   );
 };

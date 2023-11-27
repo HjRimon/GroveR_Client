@@ -3,14 +3,21 @@ import "./area.css";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+
 import { toast } from "react-toastify";
+import { useState } from "react";
 const AppartmentRooms = ({ item }) => {
   const { floor_no, block_name, apartment_no, rent, image, _id } = item;
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const location = useLocation();
+  const [agreementSubmitted, setAgreementSubmitted] = useState(false);
+
   const handleAddToCart = (room) => {
+    if (agreementSubmitted) {
+      return;
+    }
     if (user && user.email) {
       const cartItem = {
         roomId: _id,
@@ -22,7 +29,6 @@ const AppartmentRooms = ({ item }) => {
         rent,
         image,
       };
-
       Swal.fire({
         title: "Can I confirm your agreement with the request?",
         icon: "warning",
@@ -36,6 +42,7 @@ const AppartmentRooms = ({ item }) => {
             console.log(res.data);
             if (res.data.insertedId) {
               toast.success("Your agreement request has been recorded");
+              setAgreementSubmitted(true);
             }
           });
         }
@@ -76,9 +83,11 @@ const AppartmentRooms = ({ item }) => {
             </p>
             <p
               onClick={() => handleAddToCart(item)}
-              className="btun4 lg:inline-flex items-center gap-3 group-hover:bg-white/10 bg-[#abd373] shadow-[10px_10px_150px_#ff9f0d] cursor-pointer py-2 px-4 text-sm font-semibold rounded-full butn"
+              className={`${
+                agreementSubmitted ? "opacity-50 cursor-not-allowed" : ""
+              } btun4 lg:inline-flex items-center gap-3 group-hover:bg-white/10 bg-[#abd373] shadow-[10px_10px_150px_#ff9f0d] cursor-pointer py-2 px-4 text-sm font-semibold rounded-full butn`}
             >
-              Agreement
+              {agreementSubmitted ? "Pending" : "Agreement"}
             </p>
           </div>
         </div>

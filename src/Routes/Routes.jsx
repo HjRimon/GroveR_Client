@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import Profile from "../Pages/Dashboard/Profile";
 import Announcement from "../Pages/Dashboard/announcement";
+import MakePayment from "../Pages/Dashboard/MakePayment";
 
 export const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ export const router = createBrowserRouter([
       {
         path: "announcement",
         element: <Announcement></Announcement>,
+      },
+      {
+        path: "payment",
+        element: <MakePayment></MakePayment>,
       },
     ],
   },
