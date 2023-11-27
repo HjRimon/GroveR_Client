@@ -61,7 +61,7 @@ const AppartmentRooms = ({ item }) => {
     <div className="mt-10 w-[92%] mx-auto mb-10">
       <div>
         <div className="m-2 group px-10 py-5 bg-white/10 rounded-lg flex flex-col items-center justify-center gap-2 relative after:absolute after:h-full after:bg-[#b9eb69] z-20 shadow-xl after:-z-20 after:w-full after:inset-0 after:rounded-lg transition-all duration-300 hover:transition-all hover:duration-300 after:transition-all after:duration-500 after:hover:transition-all after:hover:duration-500 overflow-hidden cursor-pointer after:-translate-y-full after:hover:translate-y-0 [&amp;_p]:delay-200 [&amp;_p]:transition-all">
-          <img className="rounded-full w-64 h-64 mb-1" src={image} />
+          <img className="rounded-xl w-64 h-64 mb-1" src={image} />
 
           <p className="cardtxt font-semibold text-gray-200 tracking-wider group-hover:text-gray-700 text-xl">
             Floor No : {floor_no}

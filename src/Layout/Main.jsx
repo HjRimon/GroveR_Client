@@ -4,8 +4,14 @@ import NavBar from "../Pages/Shared/NavBar/NavBar";
 
 const Main = () => {
   const location = useLocation();
-  const noHeaderFooter = location.pathname.includes("login") || location.pathname.includes("regi");
-  const noNavBar = location.pathname.includes("login") || location.pathname.includes("regi");
+  const noHeaderFooter =
+    location.pathname.includes("login") ||
+    location.pathname.includes("regi") ||
+    location.pathname.includes("dashboard");
+  const noNavBar =
+    location.pathname.includes("login") ||
+    location.pathname.includes("regi") ||
+    location.pathname.includes("dashboard");
   return (
     <div>
       {/* <NavBar></NavBar> */}

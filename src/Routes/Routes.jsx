@@ -6,6 +6,9 @@ import Login from "../Pages/Login-Signup/Login";
 import Regi from "../Pages/Login-Signup/Regi";
 import Secret from "../Pages/Dashboard/Secret";
 import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import Profile from "../Pages/Dashboard/Profile";
+import Announcement from "../Pages/Dashboard/announcement";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +38,32 @@ export const router = createBrowserRouter([
             <Secret></Secret>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <Dashboard></Dashboard>
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "profile",
+        element: <Profile></Profile>,
+      },
+      {
+        path: "announcement",
+        element: <Announcement></Announcement>,
       },
     ],
   },

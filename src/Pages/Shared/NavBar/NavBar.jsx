@@ -117,7 +117,10 @@ const Navbar = () => {
                   <p className="pr-2 text-white relative z-10 pl-5 pt-5">{user.displayName}</p>
                 </li>
                 <li>
-                  <Link className="text-white relative z-10 p-5 hover:text-cyan-400">
+                  <Link
+                    to="/dashboard/profile"
+                    className="text-white relative z-10 p-5 hover:text-cyan-400"
+                  >
                     Dashboard
                   </Link>
                 </li>
