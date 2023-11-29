@@ -1,4 +1,5 @@
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
 
 const AboutBuilding = () => {
   return (
@@ -39,22 +40,26 @@ const AboutBuilding = () => {
           {/* ----- */}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 cursor-pointer">
+          <Link to="/appartment">
+            <img
+              className="w-96 h-64 rounded-xl inset-0 transform hover:rotate-45 transition duration-300"
+              src="https://i.ibb.co/TtK6cyW/0b8eb009-c2c4-43c3-a4cb-8686f4845a80.jpg"
+            />
+          </Link>
           <img
             className="w-96 h-64 rounded-xl inset-0 transform hover:rotate-45 transition duration-300"
-            src="https://i.ibb.co/TbXNSj3/two-teal-and-white-skyscrapers.jpg"
+            src="https://i.ibb.co/xhMzGNh/6ced8d40-2969-4144-9811-9ce4f0d7a571.jpg"
           />
           <img
             className="w-96 h-64 rounded-xl inset-0 transform hover:rotate-45 transition duration-300"
-            src="https://i.ibb.co/R49fKkY/glass-panel-high-rise-building-under-blue-sky-with-sun-raise.jpg"
+            src="https://i.ibb.co/4jgCv0b/8550110a-3c0a-4d64-a69a-064c7e0d3527.jpg"
           />
-          <img
-            className="w-96 h-64 rounded-xl inset-0 transform hover:rotate-45 transition duration-300"
-            src="https://i.ibb.co/ZKBrH4Q/aerial-photo-of-buildings-during-dusk.jpg"
-          />
-          <img
-            className="w-96 h-64 rounded-xl inset-0 transform hover:rotate-45 transition duration-300"
-            src="https://i.ibb.co/TbXNSj3/two-teal-and-white-skyscrapers.jpg"
-          />
+          <Link to="/dashboard/announcement">
+            <img
+              className="w-96 h-64 rounded-xl inset-0 transform hover:rotate-45 transition duration-300"
+              src="https://i.ibb.co/cb4W1gm/e7817724-dae2-4ff5-937d-a789e8249bff-Header-67.jpg"
+            />
+          </Link>
         </div>
       </div>
     </div>
