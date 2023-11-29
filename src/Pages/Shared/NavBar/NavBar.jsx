@@ -1,8 +1,10 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import useAdmin from "../../Dashboard/useAdmin";
 
 const Navbar = () => {
+  const [isAdmin] = useAdmin();
   const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
@@ -35,17 +37,6 @@ const Navbar = () => {
       <li>
         <NavLink to="/regi">Register</NavLink>
       </li>
-
-      {/* {user && (
-        <>
-          <li>
-            <NavLink to="/orders">Helpful Guides</NavLink>
-          </li>
-          <li>
-            <NavLink to="/honeymone">Booking Resorts</NavLink>
-          </li>
-        </>
-      )} */}
     </>
   );
 
@@ -118,7 +109,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link
-                    to="/dashboard/profile"
+                    to={isAdmin ? "/dashboard/adminprofile" : "/dashboard/profile"}
                     className="text-white relative z-10 p-5 hover:text-cyan-400"
                   >
                     Dashboard

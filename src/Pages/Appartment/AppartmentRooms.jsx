@@ -13,6 +13,10 @@ const AppartmentRooms = ({ item }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [agreementSubmitted, setAgreementSubmitted] = useState(false);
+  const currentDate = new Date();
+  const formattedDate = `${currentDate.getFullYear()}-${
+    currentDate.getMonth() + 1
+  }-${currentDate.getDate()}`;
 
   const handleAddToCart = (room) => {
     if (agreementSubmitted) {
@@ -29,6 +33,19 @@ const AppartmentRooms = ({ item }) => {
         rent,
         image,
       };
+      const userItem = {
+        roomId: _id,
+        email: user.email,
+        name: user.displayName,
+        floor_no,
+        block_name,
+        apartment_no,
+        rent,
+        image,
+        role: "",
+        currentDate: formattedDate,
+      };
+
       Swal.fire({
         title: "Can I confirm your agreement with the request?",
         icon: "warning",
@@ -38,11 +55,13 @@ const AppartmentRooms = ({ item }) => {
         confirmButtonText: "Yes!",
       }).then((result) => {
         if (result.isConfirmed) {
-          axiosSecure.post("/carts", cartItem).then((res) => {
-            console.log(res.data);
-            if (res.data.insertedId) {
-              toast.success("Your agreement request has been recorded");
-              setAgreementSubmitted(true);
+          axiosSecure.post("/carts", cartItem).then((resCart) => {
+            if (resCart.data.insertedId) {
+              axiosSecure.post("/users", userItem).then((resUser) => {
+                console.log(resUser.data);
+                toast.success("Your agreement request has been recorded");
+                setAgreementSubmitted(true);
+              });
             }
           });
         }
@@ -50,7 +69,7 @@ const AppartmentRooms = ({ item }) => {
     } else {
       Swal.fire({
         title: "You are not Logged In?",
-        text: "Please login to sign agreement!",
+        text: "Please login to sign the agreement!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",

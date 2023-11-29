@@ -10,6 +10,14 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import Profile from "../Pages/Dashboard/Profile";
 import Announcement from "../Pages/Dashboard/announcement";
 import MakePayment from "../Pages/Dashboard/MakePayment";
+import Agreementrequest from "../Pages/Dashboard/Agreementrequest";
+import Managemembers from "../Pages/Dashboard/Managemembers";
+import AdminRoute from "./AdminRoute";
+import AdminProfile from "../Pages/Dashboard/AdminProfile";
+import CouponManagement from "../Pages/Dashboard/CouponManagement";
+import AnnouncementManagement from "../Pages/Dashboard/AnnouncementManagement";
+import Payment from "../Pages/Dashboard/Payment";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
 
 export const router = createBrowserRouter([
   {
@@ -69,6 +77,55 @@ export const router = createBrowserRouter([
       {
         path: "payment",
         element: <MakePayment></MakePayment>,
+      },
+      {
+        path: "payhistory",
+        element: <PaymentHistory></PaymentHistory>,
+      },
+      {
+        path: "payment/ipayment/:id",
+        element: <Payment></Payment>,
+      },
+
+      {
+        path: "agreementrequest",
+        element: (
+          <AdminRoute>
+            <Agreementrequest></Agreementrequest>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "managemembers",
+        element: (
+          <AdminRoute>
+            <Managemembers></Managemembers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "adminprofile",
+        element: (
+          <AdminRoute>
+            <AdminProfile></AdminProfile>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "managecoupon",
+        element: (
+          <AdminRoute>
+            <CouponManagement></CouponManagement>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "makeannouncement",
+        element: (
+          <AdminRoute>
+            <AnnouncementManagement></AnnouncementManagement>
+          </AdminRoute>
+        ),
       },
     ],
   },
