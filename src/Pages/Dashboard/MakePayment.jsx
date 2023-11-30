@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 import useUser from "../../Hooks/useUser";
+import { Helmet } from "react-helmet-async";
 
 const MakePayment = () => {
-  // const [cart] = useCart();
-  // const totalPrice = cart.reduce((total, item) => total + item.rent, 0);
   const [filteredUsers] = useUser();
   const isMember = filteredUsers.some((item) => item.role === "member");
 
   return (
     <div className="w-full h-[100vh] mx-auto bg-gradient-to-b from-gray-900 via-purple-900 to-violet-600 text-white">
+      <Helmet>
+        <title>GrooveR | | Payment</title>
+      </Helmet>
       <h1 className="text-4xl font-bold text-center py-20">Pay Your Rent</h1>
       <div className="flex flex-col md:flex-row justify-center items-center gap-10">
         {isMember &&

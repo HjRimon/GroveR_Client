@@ -4,7 +4,6 @@ import Home from "../Pages/Home/Home";
 import Appartment from "../Pages/Appartment/Appartment";
 import Login from "../Pages/Login-Signup/Login";
 import Regi from "../Pages/Login-Signup/Regi";
-import Secret from "../Pages/Dashboard/Secret";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import Profile from "../Pages/Dashboard/Profile";
@@ -18,11 +17,13 @@ import CouponManagement from "../Pages/Dashboard/CouponManagement";
 import AnnouncementManagement from "../Pages/Dashboard/AnnouncementManagement";
 import Payment from "../Pages/Dashboard/Payment";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
+import ErrorPage from "../Error/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -41,14 +42,6 @@ export const router = createBrowserRouter([
         element: <Regi></Regi>,
       },
       {
-        path: "/secret",
-        element: (
-          <PrivateRoute>
-            <Secret></Secret>
-          </PrivateRoute>
-        ),
-      },
-      {
         path: "/dashboard",
         element: (
           <PrivateRoute>
@@ -65,6 +58,7 @@ export const router = createBrowserRouter([
         <Dashboard></Dashboard>
       </PrivateRoute>
     ),
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "profile",

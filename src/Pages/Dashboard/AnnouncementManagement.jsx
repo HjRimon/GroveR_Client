@@ -1,9 +1,9 @@
-// src/components/AnnouncementManagement.js
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Input } from "@material-tailwind/react";
+import { Helmet } from "react-helmet-async";
 
 const AnnouncementManagement = () => {
   const [announcements, setAnnouncements] = useState([]);
@@ -14,9 +14,8 @@ const AnnouncementManagement = () => {
   });
 
   useEffect(() => {
-    // Fetch all announcements when component mounts
     axios
-      .get("http://localhost:5000/api/announcements")
+      .get("https://building-management-server-beta.vercel.app/api/announcements")
       .then((response) => setAnnouncements(response.data))
       .catch((error) => console.error("Error fetching announcements:", error));
   }, []);
@@ -27,15 +26,12 @@ const AnnouncementManagement = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Send data to the server to add a new announcement
     axios
-      .post("http://localhost:5000/api/announcements", formData)
+      .post("https://building-management-server-beta.vercel.app/api/announcements", formData)
       .then((response) => {
         setAnnouncements([...announcements, response.data]);
         setFormData({ title: "", description: "", image: "" });
 
-        // Show success toast
         toast.success("Announcement added successfully!", {
           position: "top-right",
           autoClose: 3000,
@@ -51,7 +47,9 @@ const AnnouncementManagement = () => {
   return (
     <div>
       <h1 className="text-3xl text-center font-bold py-10">Announcement Management</h1>
-
+      <Helmet>
+        <title>GrooveR || Announcement_Management</title>
+      </Helmet>
       <div className="mb-10">
         <table className="table w-auto">
           <thead className="text-lg md:text-2xl">

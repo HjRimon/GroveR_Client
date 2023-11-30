@@ -1,9 +1,13 @@
+import { Helmet } from "react-helmet-async";
 import useAuth from "../../Hooks/useAuth";
 
 const AdminProfile = () => {
   const { user } = useAuth();
   return (
     <div className="w-[100%] h-[100vh] mx-auto bg-gradient-to-b from-gray-900 via-purple-900 to-violet-600 text-white">
+      <Helmet>
+        <title>GrooveR || Admin_Profile</title>
+      </Helmet>
       <h1 className="text-4xl text-center font-bold py-10">Admin Profile</h1>
       <div className="flex justify-center items-center">
         <div className="relative group  cursor-pointer group overflow-hidden  text-gray-50 md:h-96 md:w-96  rounded-2xl hover:duration-700 duration-700 flex justify-center items-center">

@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { FaTrashAlt } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const Managemembers = () => {
   const axiosSecure = useAxiosSecure();
@@ -41,6 +42,9 @@ const Managemembers = () => {
 
   return (
     <div className="bg-gradient-to-b from-gray-900 via-purple-900 to-violet-600 w-[100%] h-[100vh] text-white">
+      <Helmet>
+        <title>GrooveR || Manage_Members</title>
+      </Helmet>
       <h1 className="text-4xl text-center font-bold py-10">Manage Members</h1>
       <div className="w-[80%] mx-auto">
         <table className="table -ml-12 md:-ml-8 lg:ml-auto">
@@ -52,7 +56,7 @@ const Managemembers = () => {
               <th>Delete</th>
             </tr>
           </thead>
-        <tbody className="text-3xl">
+          <tbody className="text-3xl">
             {users.map((item, i) => (
               <tr key={item._id}>
                 <th>{i + 1}</th>

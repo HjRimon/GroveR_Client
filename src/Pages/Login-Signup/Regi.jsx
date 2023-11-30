@@ -4,10 +4,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Helmet } from "react-helmet-async";
-// import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Regi = () => {
-  // const axiosPublic = useAxiosPublic();
   const { createUser, signInWithGoogle, updateDisplayName, updateProfileImage } =
     useContext(AuthContext);
   const navigate = useNavigate();
@@ -54,16 +52,6 @@ const Regi = () => {
         updateDisplayName(name),
           updateProfileImage(photo)
             .then(() => {
-              // const userInfo = {
-              //   name : name,
-              //   email: email,
-              // }
-              // axiosPublic.post('/users',userInfo)
-              // .then(res=>{
-              //   if(res.data.insertedId){
-
-              //   }
-              // })
               console.log(result.user);
               e.target.reset();
               localStorage.setItem("registrationSuccess", "true");

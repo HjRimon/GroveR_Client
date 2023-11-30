@@ -14,11 +14,9 @@ const Main = () => {
     location.pathname.includes("dashboard");
   return (
     <div>
-      {/* <NavBar></NavBar> */}
       {noNavBar || <NavBar></NavBar>}
       <Outlet></Outlet>
       {noHeaderFooter || <Footer></Footer>}
-      {/* <Footer></Footer> */}
     </div>
   );
 };

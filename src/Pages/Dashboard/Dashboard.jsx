@@ -18,6 +18,7 @@ import {
   FaUsers,
 } from "react-icons/fa";
 import useAdmin from "./useAdmin";
+import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
@@ -97,7 +98,6 @@ const Dashboard = () => {
           )}
         </ul>
       </List>
-
       <Divider />
       <List>
         <ul>
@@ -116,6 +116,9 @@ const Dashboard = () => {
 
   return (
     <>
+      <Helmet>
+        <title>GrooveR | | Dashboard</title>
+      </Helmet>
       <div className="fixed top-0 left-0 z-10">
         <Button onClick={toggleDrawer("left", true)}>
           <RiMenuUnfoldLine className="text-4xl text-black font-extrabold" />

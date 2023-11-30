@@ -3,6 +3,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Input } from "@material-tailwind/react";
+import { Helmet } from "react-helmet-async";
 
 const CouponManagement = () => {
   const [coupons, setCoupons] = useState([]);
@@ -13,9 +14,8 @@ const CouponManagement = () => {
   });
 
   useEffect(() => {
-    // Fetch all coupons when component mounts
     axios
-      .get("http://localhost:5000/api/coupons")
+      .get("https://building-management-server-beta.vercel.app/api/coupons")
       .then((response) => setCoupons(response.data))
       .catch((error) => console.error("Error fetching coupons:", error));
   }, []);
@@ -26,10 +26,8 @@ const CouponManagement = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Send data to the server to add a new coupon
     axios
-      .post("http://localhost:5000/api/coupons", formData)
+      .post("https://building-management-server-beta.vercel.app/api/coupons", formData)
       .then((response) => {
         setCoupons([...coupons, response.data]);
         setFormData({ code: "", percentage: "", description: "" });
@@ -48,6 +46,9 @@ const CouponManagement = () => {
 
   return (
     <div className="w-full lg:h-[100vh] mx-auto bg-gradient-to-b from-gray-900 via-purple-900 to-violet-600 flex justify-center items-center">
+      <Helmet>
+        <title>GrooveR || Coupon_Management</title>
+      </Helmet>
       <div className="bg-white p-10 rounded-xl w-auto md:w-[60%] mx-auto">
         <h1 className="text-3xl text-center font-bold py-10">Coupon Management</h1>
         <div className="flex flex-col lg:flex-row justify-center items-center gap-12">
