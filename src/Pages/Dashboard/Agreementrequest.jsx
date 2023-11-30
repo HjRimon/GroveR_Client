@@ -287,7 +287,9 @@ const Agreementrequest = () => {
                       </td>
                       <td>
                         {item.role === "admin" ? (
-                          <span style={{ color: "white", fontSize: "30px" }}>Admin</span>
+                          <span style={{ color: "white", fontSize: "26px", fontWeight: "bold" }}>
+                            Admin
+                          </span>
                         ) : (
                           <button
                             onClick={() => handleReject(item, "user")}
